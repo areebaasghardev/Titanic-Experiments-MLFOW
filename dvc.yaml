@@ -1,0 +1,21 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/train.csv
+      - data/test.csv
+      - data/gender_submission.csv
+    outs:
+      - data/X_train.csv
+      - data/y_train.csv
+      - data/X_test.csv
+
+  train:
+    cmd: python src/train.py --params params.yaml
+    deps:
+      - src/train.py
+      - data/X_train.csv
+      - data/y_train.csv
+    params:
+      - train

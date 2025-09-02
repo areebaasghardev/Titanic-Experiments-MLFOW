@@ -1,0 +1,12 @@
+preprocess:
+  input_train: data/train.csv
+  input_test: data/test.csv
+  output_X_train: data/X_train.csv
+  output_y_train: data/y_train.csv
+  output_X_test: data/X_test.csv
+
+train:
+  model_type: LogisticRegression
+  random_state: 42
+  max_iter: 500
+  test_size: 0.2

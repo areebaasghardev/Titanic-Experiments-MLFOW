@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/gender_submission.csv
+      hash: md5
+      md5: 30d1073b964a5d815431ec603a0de353
+      size: 3258
+    - path: data/test.csv
+      hash: md5
+      md5: 7533b82eae4b582610cbd68aa636b017
+      size: 28629
+    - path: data/train.csv
+      hash: md5
+      md5: 2309cc5f04782ed9bb6016d9f4e381cf
+      size: 61194
+    - path: src/preprocess.py
+      hash: md5
+      md5: 8a6e82fd48b6cab374d52bbf54d88c1a
+      size: 4689
+    outs:
+    - path: data/X_test.csv
+      hash: md5
+      md5: f91ccdc118688d5854f5a2f98240205c
+      size: 11843
+    - path: data/X_train.csv
+      hash: md5
+      md5: 2cf34e249cba684487e741393611ca45
+      size: 25058
+    - path: data/y_train.csv
+      hash: md5
+      md5: d8a256ba85d0361a4f697af4128a4c90
+      size: 2683
+  train:
+    cmd: python src/train.py --params params.yaml
+    deps:
+    - path: data/X_train.csv
+      hash: md5
+      md5: 2cf34e249cba684487e741393611ca45
+      size: 25058
+    - path: data/y_train.csv
+      hash: md5
+      md5: d8a256ba85d0361a4f697af4128a4c90
+      size: 2683
+    - path: src/train.py
+      hash: md5
+      md5: 697f31fde8b98e5ec23a7dadee33e241
+      size: 1993
+    params:
+      params.yaml:
+        train:
+          model_type: LogisticRegression
+          random_state: 42
+          max_iter: 500
+          test_size: 0.2

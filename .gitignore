@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# DVC and MLflow
+*.dvc
+.dvc/
+mlruns/
+
+# Data directories (raw/processed)
+data/raw/
+data/processed/
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
